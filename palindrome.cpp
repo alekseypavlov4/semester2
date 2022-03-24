@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstring>
-#include <cmath>
 
 using namespace std;
 
@@ -25,9 +24,9 @@ int qwe(int a)
 	int t = a;
     int b = 0;
     
-    while (tp != 0)
+    while (t != 0)
     {
-        b = b * 10 + temp % 10;
+        b = b * 10 + t % 10;
         t /= 10;
     }
     
