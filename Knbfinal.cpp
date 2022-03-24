@@ -1,7 +1,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
-#include <string>
 using namespace std;
 int game (string a, string b);
 int main(){
@@ -15,8 +14,7 @@ int main(){
 		cout << "Your choice: ";
 		cin >> player;
 		cout << game(pc,player)<<endl;
-		cout << "Enter q to quit" << endl;
-		cin >> key;
+		return 0;
 	}
 }
 int game(string a, string b){
