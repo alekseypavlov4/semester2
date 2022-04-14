@@ -32,9 +32,21 @@ int main()
     {
         for (int j = 0; j < (n -1); j++)
         {
-            sum = sum + arr[i][j]*arr[i][j+1] + arr[i][j]*arr[i+1][j];
+            if ((i+1 == n) and (j+1 == n))
+            {
+                sum = sum + arr[i][j]*arr[i][j+1] + arr[i][j]*arr[i+1][j];
+            }
+            else if((i+1 == n) and (j+1 != n))
+                {
+                    sum = sum + arr[i][j]*arr[i][j+1] + arr[i][j]*arr[i+1][j] + arr[i][n];
+                }
+            else if((i+1 != n) and (j+1 == n))
+            {
+                sum = sum + arr[i][j]*arr[i][j+1] + arr[i][j]*arr[i+1][j] + arr[n][j];
+            }
         }
     }
+    sum += arr[n][n];
     cout << endl;
     cout << sum << endl;
     return 0;
