@@ -28,25 +28,33 @@ int main()
     }
 
     int sum = 0;
-    for (int i = 0; i < (n -1); i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < (n -1); j++)
+        for (int j = 0; j < n; j++)
         {
-            if ((i+1 == n) and (j+1 == n))
+            if((i == n-1) and (j != n-1))
             {
-                sum = sum + arr[i][j]*arr[i][j+1] + arr[i][j]*arr[i+1][j];
+                sum += arr[i][j]*arr[0][j]+arr[i][j]*arr[i][j+1];
+                cout << sum << endl;
             }
-            else if((i+1 == n) and (j+1 != n))
-                {
-                    sum = sum + arr[i][j]*arr[i][j+1] + arr[i][j]*arr[i+1][j] + arr[i][n];
-                }
-            else if((i+1 != n) and (j+1 == n))
+            else if((i != n-1) and (j == n-1))
             {
-                sum = sum + arr[i][j]*arr[i][j+1] + arr[i][j]*arr[i+1][j] + arr[n][j];
+                sum += arr[i][j]*arr[i][0]+arr[i][j]*arr[i+1][j];
+                cout << sum << endl;
+            }
+            else if((i == n-1) and (j == n-1))
+            {
+                sum += arr[i][j]*arr[i][0]+arr[i][j]*arr[0][j];
+                cout << sum << endl;
+                sum += arr[i][j];
+            }
+            else
+            {
+                sum += arr[i][j]*arr[i+1][j]+arr[i][j]*arr[i][j+1];
+                cout << sum << endl;
             }
         }
     }
-    sum += arr[n][n];
     cout << endl;
     cout << sum << endl;
     return 0;
