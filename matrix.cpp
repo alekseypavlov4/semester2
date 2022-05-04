@@ -28,33 +28,54 @@ int main()
     }
 
     int sum = 0;
-    for (int i = 0; i < n; i++)
+    
+    for (int i = 0; i < n-1; i++)
+    {
+        for (int j = 0; j < n-1; j++)
+        {
+            sum += arr[i][j]*arr[i+1][j]+arr[i][j]*arr[i][j+1];
+            cout << sum << " 1 " << arr[i][j] <<endl;
+        }
+    }
+    
+    for (int i = 0; i < n-2; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            if((i == n-1) and (j != n-1))
-            {
-                sum += arr[i][j]*arr[0][j]+arr[i][j]*arr[i][j+1];
-                cout << sum << " 2" << endl;
-            }
-            else if((i != n-1) and (j == n-1))
-            {
-                sum += arr[i][j]*arr[i][0]+arr[i][j]*arr[i+1][j];
-                cout << sum << " 3" << endl;
-            }
-            else if((i == n-1) and (j == n-1))
-            {
-                sum += arr[i][j]*arr[i][0]+arr[i][j]*arr[0][j];
-                cout << sum << " 4" << endl;
-                sum += arr[i][j];
-            }
-            else
-            {
-                sum += arr[i][j]*arr[i+1][j]+arr[i][j]*arr[i][j+1];
-                cout << sum << " 1" << endl;
-            }
+            sum += arr[i][j]*arr[n-1][j];
+            cout << sum << " 2 " << arr[i][j]<<endl;
         }
     }
+    
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n-2; j++)
+        {
+            sum += arr[i][j]*arr[i][n-1];
+            cout << sum << " 3 " << arr[i][j]<<endl;
+        }
+    }
+    
+    for (int i = 0; i < n-1; i++)
+    {
+        int j = n-1;
+        {
+            sum += arr[i][j]*arr[i+1][j];
+            cout << sum << " 4 "<< arr[i][j] <<endl;
+        }
+    }
+    
+    for (int j = 0; j < n-1; j++)
+    {
+        int i = n-1;
+        {
+            sum += arr[i][j]*arr[i][j+1];
+            cout << sum << " 5 "<< arr[i][j] <<endl;
+        }
+    }
+    
+    sum += arr[n-1][n-1];
+    
     cout << endl;
     cout << sum << endl;
     return 0;
