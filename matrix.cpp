@@ -1,82 +1,147 @@
 #include <iostream>
 #include <iomanip>
-#include <cstdlib>
-#include <ctime>
 
 using namespace std;
 
 int main()
 {
-    int n;
-    srand(time(NULL));
-    const int N = 2;
-    int mtrx[N] = {-1, 1};
-    cout << "Razmer matrix: ";
-    cin >> n;
-    int arr[n][n];
-    for(int i = 0; i < n; i++)
+    int a,b,c,d;
+    int i = 1;
+    while (i != 0)
     {
-        for(int j = 0; j < n; j++)
+    cout << endl;
+    cout << "stolbci matrix A: ";
+    cin >> a;
+    cout << "srtoki matrix A: ";
+    cin >> b;
+
+    cout << "stolbci matrix B: ";
+    cin >> c;
+    cout << "stroki matrix B: ";
+    cin >> d;
+
+    cout << endl;
+
+    if ((a == d) or (b == c) or (a == b == c == d))
         {
-            arr[i][j] = mtrx[rand()%2];
-            cout << setw(3) << arr[i][j] << " ";
-            if (j >= (n -1))
+        cout << "Uslovie vipolneno" << endl;
+        i = 0;
+        }
+    else
+        {
+            cout << "Uslovie ne vipolneno, povtorite snova" << endl;
+        }
+    }
+
+    cout << "Vvedite elenti matrix A" << endl;
+    int A[a][b];
+    for(int i = 0; i < b; i++)
+        {
+        for(int j = 0; j < a; j++)
             {
+            cin >> A[i][j];
+            }
+        }
+
+    cout << endl;
+    cout << "Vvedite elenti matrix B" << endl;
+    int B[c][d];
+    for(int i = 0; i < d; i++)
+        {
+        for(int j = 0; j < c; j++)
+            {
+            cin >> B[i][j];
+            }
+        }
+
+    cout << endl;
+
+    for(int i = 0; i < b; i++)
+        {
+        for(int j = 0; j < a; j++)
+            {
+            cout << setw(3) << A[i][j] << " ";
+            if (j >= (a -1))
+                {
                 cout << endl;
+                }
+            }
+        }
+
+    cout << endl;
+
+    for(int i = 0; i < d; i++)
+        {
+        for(int j = 0; j < c; j++)
+            {
+            cout << setw(3) << B[i][j] << " ";
+            if (j >= (c -1))
+                {
+                cout << endl;
+                }
+            }
+        }
+    int sum = 0;
+    cout << endl;
+
+    if((a == d) and (b == c))
+    {
+        int C[a][a];
+
+        for(int i = 0; i < a; i++)
+        {
+        for(int j = 0; j < a; j++)
+            {
+                for(int i = 0; i < b; i++)
+                    {
+                    for(int j = 0; j < a; j++)
+                        {
+                        sum +=
+                    }
+                }
+            C[i][j] = 1;
+            cout << setw(3) << C[i][j] << " ";
+            if (j >= (a -1))
+                {
+                cout << endl;
+                }
+            }
+        }
+    }
+    else if((a == d) and (b != c))
+    {
+        int C[a][d];
+
+        for(int i = 0; i < a; i++)
+        {
+        for(int j = 0; j < d; j++)
+        {
+            C[i][j] = 1;
+            cout << setw(3) << C[i][j] << " ";
+            if (j >= (d -1))
+                {
+                cout << endl;
+                }
+            }
+        }
+    }
+    else
+    {
+        int C[b][c];
+
+        for(int i = 0; i < b; i++)
+        {
+        for(int j = 0; j < c; j++)
+            {
+            C[i][j] = 1;
+            cout << setw(3) << C[i][j] << " ";
+            if (j >= (c -1))
+                {
+                cout << endl;
+                }
             }
         }
     }
 
-    int sum = 0;
-    
-    for (int i = 0; i < n-1; i++)
-    {
-        for (int j = 0; j < n-1; j++)
-        {
-            sum += arr[i][j]*arr[i+1][j]+arr[i][j]*arr[i][j+1];
-            cout << sum << " 1 " << arr[i][j] <<endl;
-        }
-    }
-    
-    for (int i = 0; i < n-2; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            sum += arr[i][j]*arr[n-1][j];
-            cout << sum << " 2 " << arr[i][j]<<endl;
-        }
-    }
-    
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n-2; j++)
-        {
-            sum += arr[i][j]*arr[i][n-1];
-            cout << sum << " 3 " << arr[i][j]<<endl;
-        }
-    }
-    
-    for (int i = 0; i < n-1; i++)
-    {
-        int j = n-1;
-        {
-            sum += arr[i][j]*arr[i+1][j];
-            cout << sum << " 4 "<< arr[i][j] <<endl;
-        }
-    }
-    
-    for (int j = 0; j < n-1; j++)
-    {
-        int i = n-1;
-        {
-            sum += arr[i][j]*arr[i][j+1];
-            cout << sum << " 5 "<< arr[i][j] <<endl;
-        }
-    }
-    
-    sum += arr[n-1][n-1];
-    
-    cout << endl;
-    cout << sum << endl;
     return 0;
 }
